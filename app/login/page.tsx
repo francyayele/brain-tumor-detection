@@ -13,6 +13,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const [tabValue, setTabValue] = useState("email");
 
   const handleEmailLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,19 +35,17 @@ export default function LoginPage() {
             Please log in to continue.
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <Tabs defaultValue="email" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 text-white font-semibold">
-              <TabsTrigger value="email" className="hover:text-blue-400 transition duration-300 ease-in-out">
-                Email
-              </TabsTrigger>
-              <TabsTrigger value="google" className="hover:text-blue-400 transition duration-300 ease-in-out">
-                Google
-              </TabsTrigger>
-            </TabsList>
+          <Tabs value={tabValue} onValueChange={setTabValue} className="w-full">
+            <div className="grid w-full grid-cols-2 text-white font-semibold">
+              <TabsList>
+              <TabsTrigger value="email" label="Email" onClick={() => setTabValue("email")} />
+              <TabsTrigger value="google" label="Google" onClick={() => setTabValue("google")} />
+
+              </TabsList>
+            </div>
 
             {/* Email login form */}
-            <TabsContent value="email">
+            <TabsContent value="email" activeTab={tabValue}>
               <form onSubmit={handleEmailLogin} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="email" className="text-white">
@@ -85,7 +84,7 @@ export default function LoginPage() {
             </TabsContent>
 
             {/* Google login button */}
-            <TabsContent value="google">
+            <TabsContent value="google" activeTab={tabValue}>
               <Button
                 onClick={handleGoogleLogin}
                 className="w-full mt-4 bg-gray-700 hover:bg-gray-600 text-white transition-all duration-300 ease-in-out"
@@ -95,16 +94,16 @@ export default function LoginPage() {
               </Button>
             </TabsContent>
           </Tabs>
-        </CardContent>
-        <CardFooter>
-          <p className="text-sm text-center text-gray-300 w-full">
-            Don't have an account?{" "}
-            <a href="#" className="text-blue-500 hover:underline transition-all duration-300 ease-in-out">
-              Create one
-            </a>
-          </p>
-        </CardFooter>
-      </Card>
-    </div>
-  );
-}
+          <CardFooter>
+            <p className="text-sm text-center text-gray-300 w-full">
+              Don&apos;t have an account?{" "}
+              <a href="#" className="text-blue-500 hover:underline transition-all duration-300 ease-in-out">
+                Create one
+              </a>
+            </p>
+          </CardFooter>
+        </Card>
+      </div>
+    );
+  }
+

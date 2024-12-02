@@ -20,7 +20,8 @@ export default function PatientInfoPage() {
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { id, value, type, checked } = e.target;
+    const { id, value, type } = e.target as HTMLInputElement;
+    const checked = (e.target as HTMLInputElement).checked;
     setFormData({
       ...formData,
       [id]: type === "checkbox" ? checked : value,

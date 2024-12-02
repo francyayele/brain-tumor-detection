@@ -62,7 +62,7 @@ export default function UploadPage() {
             </p>
           )}
           {uploading && (
-            <Progress value={progress} className="w-full" />
+            <Progress value={progress} />
           )}
         </CardContent>
         <CardFooter>
