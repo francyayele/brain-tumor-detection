@@ -43,7 +43,7 @@ export default function UploadPage() {
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Upload MRI Scan</CardTitle>
-          <CardDescription>Select and upload the patient's MRI scan for analysis</CardDescription>
+          <CardDescription>Select and upload the patient&apos;s MRI scan for analysis</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center justify-center w-full">
